@@ -1,0 +1,68 @@
+
+
+import sys
+import random
+
+
+def pow_function(x,y):
+    result = 1
+    while y:
+        if y & 1:
+            result = result * x
+        y >>= 1
+        x = x * x
+    return result
+
+
+def sort_million( aList, k ):
+    counter = [0] * ( k + 1 )
+    for i in aList:
+      counter[i] += 1
+
+    ndx = 0;
+    for i in range( len( counter ) ):
+      while 0 < counter[i]:
+        aList[ndx] = i
+        ndx += 1
+        counter[i] -= 1
+
+    return aList
+
+
+def sort_string(s):
+    import re
+    sorted_string=""
+    new_list = re.split('(\d+)',s)
+    for temp_str in new_list:
+        sorted_string+= ''.join(sorted(temp_str))
+
+    return sorted_string
+
+#Helper function
+def random_gen(low, high):
+    while True:
+        yield random.randrange(low, high)
+
+def main():
+
+    # Question 1 Test case pow function
+    print(pow_function(4,2))
+    print(pow_function(8,2))
+
+    # Question 2 sort a million
+    gen = random_gen(1, 10)
+    million_list = list(itertools.islice(gen, 1000000))
+    sorted_list=sort_million(million_list,10)
+    print(million_list)
+
+    # Question 3
+    unsorted_string = "asdlfhaslj3452345lkjasl12341234asjdfl"
+    print(sort_string(unsorted_string))
+
+
+
+
+
+if __name__ == "__main__":
+
+    sys.exit(main())
