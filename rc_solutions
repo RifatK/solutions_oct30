@@ -50,12 +50,14 @@ def main():
     print(pow_function(8,2))
 
     # Question 2 sort a million
+    # the order of complexity should be better than N log N
     gen = random_gen(1, 10)
     million_list = list(itertools.islice(gen, 1000000))
     sorted_list=sort_million(million_list,10)
     print(million_list)
 
     # Question 3
+    # due to shortage of time I've used the built in python sort method
     unsorted_string = "asdlfhaslj3452345lkjasl12341234asjdfl"
     print(sort_string(unsorted_string))
 
